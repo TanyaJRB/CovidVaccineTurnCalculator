@@ -1,0 +1,114 @@
+﻿@model VaccineTurn.Models.ViewModels.DashboardVM
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<h1>Covid-19 UK Vaccinations Dashboard</h1>
+<hr />
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-5">
+            <h3>Total Vaccinations Administered</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th><label asp-for="TotalVaccinations.First().CurrentDate"></label></th>
+                        <th><label asp-for="TotalVaccinations.First().VaccType"></label></th>
+                        <th><label asp-for="TotalVaccinations.First().TotalDoses"></label></th>
+                    <tr />
+                </thead>
+                <tbody>
+                    @foreach (TotalVaccinations stat in Model.TotalVaccinations)
+                    {
+                        <tr>
+                            <td>@stat.CurrentDate.ToShortDateString()</td>
+                            <td>@stat.VaccType</td>
+                            <td>@stat.TotalDoses.ToString("N0")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-4">
+            <h3>Daily Rate of First Doses</h3>
+            <h5>(Past 5 Days)</h5>
+            <table>
+                <thead>
+                    <tr>
+                        <th><label asp-for="DailyRate.First().CurrentDate"></label></th>
+                        <th><label asp-for="DailyRate.First().CurrentRate"></label></th>
+                    <tr />
+                </thead>
+                <tbody>
+                    @foreach (DailyRate dr in Model.DailyRate)
+                    {
+                        <tr>
+                            <td>@dr.CurrentDate.ToShortDateString()</td>
+                            <td>@dr.CurrentRate.ToString("N0")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        @*</div>*@
+        @*<div class="row">*@
+        <div class="col-3">
+            <h3>Population Groups</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th><label asp-for="PopulationGroups.First().AgeGroupMin"></label></th>
+                        <th><label asp-for="PopulationGroups.First().AgeGroupMax"></label></th>
+                        <th><label asp-for="PopulationGroups.First().NumberPeople"></label></th>
+                    <tr />
+                </thead>
+                <tbody>
+                    @foreach (PopulationGroups pg in Model.PopulationGroups)
+                    {
+                        <tr>
+                            <td>@pg.AgeGroupMin</td>
+                            <td>@pg.AgeGroupMax</td>
+                            <td>@pg.NumberPeople.ToString("N0")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="col-8">
+        <h3>Government Targets</h3>
+        <dl class="row">
+            <dt class="col">
+                @Html.DisplayNameFor(model => model.Targets.TargetDate)
+            </dt>
+            <dd class="col">
+                @Html.DisplayFor(model => model.Targets.TargetDate)
+            </dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-4">
+                @Html.DisplayNameFor(model => model.Targets.TargetDailyRate)
+            </dt>
+            <dd class="col">
+                @Html.DisplayFor(model => model.Targets.TargetDailyRate)
+            </dd>
+            <dt class="col">
+                @Html.DisplayNameFor(model => model.Targets.TargetWeeklyRate)
+            </dt>
+            <dd class="col">
+                @Html.DisplayFor(model => model.Targets.TargetWeeklyRate)
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<br />
+<div class="text-center">
+    <a asp-controller="Home" asp-action="Index" class="btn btn-primary w-25 text-center">Home</a>
+</div>

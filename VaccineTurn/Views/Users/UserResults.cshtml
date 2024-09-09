@@ -1,0 +1,61 @@
+﻿@model VaccineTurn.Data.DTOs.UserResultsDto
+
+@{
+    ViewData["Title"] = "UserResults";
+}
+
+<h1>Your Results</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-m-2">
+            @Html.DisplayNameFor(model => model.Age)
+        </dt>
+        <dd class = "col-m-10">
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+        <dt class = "col-m-2">
+            @Html.DisplayNameFor(model => model.YourPopulationGroup)
+        </dt>
+        <dd class = "col-m-10">
+            @Html.DisplayFor(model => model.YourPopulationGroup)
+        </dd>
+        <dt class = "col-m-2">
+            @Html.DisplayNameFor(model => model.CurrentPopulationGroup)
+        </dt>
+        <dd class = "col-m-10">
+            @Html.DisplayFor(model => model.CurrentPopulationGroup)
+        </dd>
+        <dt class = "col-m-2">
+            @Html.DisplayNameFor(model => model.PeopleAhead)
+        </dt>
+        <dd class = "col-m-10">
+            @Html.DisplayFor(model => model.PeopleAhead)
+        </dd>
+        <dt class = "col-m-2">
+            @Html.DisplayNameFor(model => model.CurrentDailyRate)
+        </dt>
+        <dd class = "col-m-10">
+            @Html.DisplayFor(model => model.CurrentDailyRate)
+        </dd>
+        <dt class = "col-m-2">
+            @Html.DisplayNameFor(model => model.FirstDosesToDate)
+        </dt>
+        <dd class = "col-m-10">
+            @Html.DisplayFor(model => model.FirstDosesToDate)
+        </dd>
+        <dt class = "col-m-2">
+            @Html.DisplayNameFor(model => model.EarliestVaccineDate)
+        </dt>
+        <dd class = "col-m-10">
+            @Html.DisplayFor(model => model.EarliestVaccineDate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-controller="Users" asp-action="UserResultsTarget" asp-route-id="@Model.UserId" class="btn btn-primary w-100">Click to see your results if the UK government meets its projected targets.</a>
+    <br />
+    <br />
+    <a asp-controller="Home" asp-action="Index" class="btn btn-warning w-25">Home</a>
+</div>

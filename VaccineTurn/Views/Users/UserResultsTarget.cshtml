@@ -1,0 +1,42 @@
+﻿@model VaccineTurn.Models.ViewModels.UserResultsTargetVM
+
+@{
+    ViewData["Title"] = "UserResultsTarget";
+}
+
+<h1>Your Results if the UK Government meets its Targets</h1>
+
+<div>
+    <hr />
+</div>
+
+<dl class="row">
+    <dt class="col-m-2">
+        Target Date for all adults to have received their first vaccination dose:
+    </dt>
+    <dd class="col-m-10">
+        @Model.Targets.TargetDate.ToShortDateString()
+    </dd>
+    <dt class="col-m-2">
+        The daily rate to achieve this would be:
+    </dt>
+    <dd class="col-m-10">
+        @Model.Targets.TargetDailyRate.ToString("N0")
+    </dd>
+    <dt class="col-m-2">
+        With a weekly rate of:
+    </dt>
+    <dd class="col-m-10">
+        @Model.Targets.TargetWeeklyRate.ToString("N0")
+    </dd>
+    <dt class="col-m-2">
+       If this daily rate is maintained from now onwards, the earliest you could get vaccinated would be:
+    </dt>
+    <dd class="col-m-10">
+        @Model.UserResultsDto.EarliestVaccineDate
+    </dd>
+</dl>
+
+<div>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-primary w-25">Home</a>
+</div>
